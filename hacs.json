@@ -1,0 +1,7 @@
+{
+  "name": "Virtual battery controller",
+  "content_binary": false,
+  "render_readme": true,
+  "country": "NL",
+  "homeassistant": "2024.1.0"
+}
