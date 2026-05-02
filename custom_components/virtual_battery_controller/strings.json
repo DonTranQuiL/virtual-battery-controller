@@ -1,0 +1,34 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "price_sensor": "Price Sensor (e.g. ENTSO-E)",
+          "climate_entity": "Target Climate Device",
+          "switch_entities": "Smart Plugs / Switches",
+          "solar_export_sensor": "Solar Export Sensor (Optional)",
+          "hvac_mode": "HVAC Mode (Heating/Cooling)",
+          "airco_wattage": "Device Wattage (W)",
+          "min_temp": "Min Temperature Setpoint",
+          "max_temp": "Max Temperature Setpoint"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "price_sensor": "Price Sensor",
+          "climate_entity": "Climate Device",
+          "switch_entities": "Smart Plugs",
+          "solar_export_sensor": "Solar Export Sensor",
+          "hvac_mode": "HVAC Mode",
+          "airco_wattage": "Device Wattage (W)",
+          "min_temp": "Min Temp",
+          "max_temp": "Max Temp"
+        }
+      }
+    }
+  }
+}
