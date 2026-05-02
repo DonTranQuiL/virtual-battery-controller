@@ -1,5 +1,7 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)][hacs]
-[![Project Maintenance][maintenance_badge]](https://github.com/Malosaaa/ha-p2000)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.5+-blue.svg)
 # 🔋 Virtual Battery Controller (VBC)
 ### Turn your Home into a Thermal Battery for Smart Energy Arbitrage
 
@@ -80,6 +82,4 @@ Contributions are welcome! Whether it's adding support for more price providers 
 ### Why use a Virtual Battery?
 Conventional batteries are expensive and have limited cycles. Your home already has "mass"—walls, floors, and furniture—that holds temperature. By "over-heating" or "over-cooling" your home by just 1 or 2 degrees when energy is free or cheap, you are effectively storing kilowatts of energy for later use, reducing your carbon footprint and your electricity bill simultaneously.
 
-[hacs]: https://hacs.xyz
-[hacs_badge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge
-[maintenance_badge]: https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge
+
