@@ -78,7 +78,8 @@ class VirtualBatteryCharging(BinarySensorEntity):
         price_sensor_id = self.config_data[CONF_PRICE_SENSOR]
         price_state = self.hass.states.get(price_sensor_id)
         
-        if not price_state: return False
+        if not price_state: 
+            return False
 
         current_price = float(price_state.state)
         attrs = price_state.attributes
@@ -89,8 +90,10 @@ class VirtualBatteryCharging(BinarySensorEntity):
         if "all_prices" in attrs:       
             prices_list = attrs["all_prices"]
             if len(prices_list) > 0:
-                if 'price_kwh' in prices_list[0]: price_key = 'price_kwh' # ENTSO-E
-                elif 'prijs' in prices_list[0]: price_key = 'prijs'     # Enever
+                if 'price_kwh' in prices_list[0]: 
+                    price_key = 'price_kwh' # ENTSO-E
+                elif 'prijs' in prices_list[0]: 
+                    price_key = 'prijs'     # Enever
 
         try:
             # SCENARIO A: Found a forecast! Calculate dynamic threshold.
@@ -128,7 +131,8 @@ class VirtualBatteryCharging(BinarySensorEntity):
     def _update_climate(self, charging):
         """Update the Airco setpoint based on Heating/Cooling and Charging state."""
         climate_id = self.config_data.get(CONF_CLIMATE_ENTITY)
-        if not climate_id: return
+        if not climate_id: 
+            return
 
         hvac_mode = self.config_data.get(CONF_HVAC_MODE, "Heating")
         min_temp = self.config_data[CONF_MIN_TEMP]
