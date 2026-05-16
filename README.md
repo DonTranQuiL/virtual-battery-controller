@@ -1,7 +1,10 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
-![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.5+-blue.svg)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
+[![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/DonTranQuiL/virtual-battery-controller/commits/main)
+[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.5+-blue.svg)](https://www.home-assistant.io/)
+[![Code Checker](https://github.com/DonTranQuiL/virtual-battery-controller/actions/workflows/codechecker.yml/badge.svg)](https://github.com/DonTranQuiL/virtual-battery-controller/actions)
+[![HACS Validation](https://github.com/DonTranQuiL/virtual-battery-controller/actions/workflows/hacs.yaml/badge.svg)](https://github.com/DonTranQuiL/virtual-battery-controller/actions)
+[![GitHub Release](https://img.shields.io/github/v/release/DonTranQuiL/virtual-battery-controller?style=flat-square)](https://github.com/DonTranQuiL/virtual-battery-controller/releases)
+[![Pytest](https://github.com/DonTranQuiL/virtual-battery-controller/actions/workflows/pytest.yml/badge.svg)](https://github.com/DonTranQuiL/virtual-battery-controller/actions/workflows/pytest.yml)
 # 🔋 Virtual Battery Controller (VBC)
 ### Turn your Home into a Thermal Battery for Smart Energy Arbitrage
 
