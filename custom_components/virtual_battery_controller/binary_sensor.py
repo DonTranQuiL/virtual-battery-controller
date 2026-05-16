@@ -155,7 +155,8 @@ class VirtualBatteryCharging(BinarySensorEntity):
     def _update_switches(self, charging):
         """Update all smart plugs."""
         switch_ids = self.config_data.get(CONF_SWITCH_ENTITIES, [])
-        if not switch_ids: return
+        if not switch_ids: 
+            return
 
         action = "turn_on" if charging else "turn_off"
 
