@@ -6,6 +6,7 @@ _LOGGER = logging.getLogger(__name__)
 
 PLATFORMS = ["sensor", "binary_sensor"]
 
+
 async def async_setup_entry(hass, entry):
     """Set up Virtual Battery from a config entry."""
     hass.data.setdefault(DOMAIN, {})
@@ -18,7 +19,7 @@ async def async_setup_entry(hass, entry):
         name="Virtual Battery",
         manufacturer="Don TranQuiL!",
         model="VBC v1.0",
-        sw_version="1.0.0"
+        sw_version="1.0.0",
     )
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
@@ -28,12 +29,14 @@ async def async_setup_entry(hass, entry):
 
     return True
 
+
 async def async_unload_entry(hass, entry):
     """Unload a config entry."""
     unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
     if unload_ok:
         hass.data[DOMAIN].pop(entry.entry_id)
     return unload_ok
+
 
 async def update_listener(hass, entry):
     """Handle options update."""

@@ -1,16 +1,27 @@
 import logging
 import statistics
-from homeassistant.components.binary_sensor import BinarySensorEntity, BinarySensorDeviceClass
+from homeassistant.components.binary_sensor import (
+    BinarySensorEntity,
+    BinarySensorDeviceClass,
+)
 from .const import (
-    DOMAIN, CONF_PRICE_SENSOR, CONF_CLIMATE_ENTITY, CONF_SWITCH_ENTITIES,
-    CONF_MIN_TEMP, CONF_MAX_TEMP, CONF_SOLAR_EXPORT_SENSOR, CONF_AIRCO_WATTAGE,
-    CONF_HVAC_MODE
+    DOMAIN,
+    CONF_PRICE_SENSOR,
+    CONF_CLIMATE_ENTITY,
+    CONF_SWITCH_ENTITIES,
+    CONF_MIN_TEMP,
+    CONF_MAX_TEMP,
+    CONF_SOLAR_EXPORT_SENSOR,
+    CONF_AIRCO_WATTAGE,
+    CONF_HVAC_MODE,
 )
 
 _LOGGER = logging.getLogger(__name__)
 
+
 async def async_setup_entry(hass, entry, async_add_entities):
     async_add_entities([VirtualBatteryCharging(hass, entry)])
+
 
 class VirtualBatteryCharging(BinarySensorEntity):
     def __init__(self, hass, entry):
@@ -33,7 +44,7 @@ class VirtualBatteryCharging(BinarySensorEntity):
             "identifiers": {(DOMAIN, self._entry.entry_id)},
             "name": "Virtual Battery",
             "manufacturer": "Custom Virtual Battery",
-            "model": "VBC v1.0"
+            "model": "VBC v1.0",
         }
 
     @property
@@ -44,18 +55,18 @@ class VirtualBatteryCharging(BinarySensorEntity):
             "hvac_mode": self.config_data.get(CONF_HVAC_MODE),
             "device_wattage": f"{self.config_data.get(CONF_AIRCO_WATTAGE)} W",
         }
-        
+
         # Add the solar sensor if the user selected one
         solar_sensor = self.config_data.get(CONF_SOLAR_EXPORT_SENSOR)
         if solar_sensor:
             attributes["target_solar_sensor"] = solar_sensor
-            
+
         # Add the list of smart plugs/relays if the user selected any
         switch_entities = self.config_data.get(CONF_SWITCH_ENTITIES, [])
         if switch_entities:
             # Join the list into a clean comma-separated string for the UI
             attributes["connected_switches"] = ", ".join(switch_entities)
-            
+
         return attributes
 
     @property
@@ -77,8 +88,8 @@ class VirtualBatteryCharging(BinarySensorEntity):
         # 3. Universal Price Arbitrage Logic
         price_sensor_id = self.config_data[CONF_PRICE_SENSOR]
         price_state = self.hass.states.get(price_sensor_id)
-        
-        if not price_state: 
+
+        if not price_state:
             return False
 
         current_price = float(price_state.state)
@@ -87,29 +98,29 @@ class VirtualBatteryCharging(BinarySensorEntity):
         # Auto-detect Enever/ENTSO-E/Nord Pool
         prices_list = None
         price_key = None
-        if "all_prices" in attrs:       
+        if "all_prices" in attrs:
             prices_list = attrs["all_prices"]
             if len(prices_list) > 0:
-                if 'price_kwh' in prices_list[0]: 
-                    price_key = 'price_kwh' # ENTSO-E
-                elif 'prijs' in prices_list[0]: 
-                    price_key = 'prijs'     # Enever
+                if "price_kwh" in prices_list[0]:
+                    price_key = "price_kwh"  # ENTSO-E
+                elif "prijs" in prices_list[0]:
+                    price_key = "prijs"  # Enever
 
         try:
             # SCENARIO A: Found a forecast! Calculate dynamic threshold.
             if prices_list and price_key:
                 all_values = [p[price_key] for p in prices_list]
-                threshold = statistics.quantiles(all_values, n=4)[0] # Cheapest 25%
+                threshold = statistics.quantiles(all_values, n=4)[0]  # Cheapest 25%
                 avg_price = statistics.mean(all_values)
                 is_cheap = current_price <= threshold
-                
+
                 # Track savings
                 if is_cheap and not self._last_state:
                     self._log_savings(current_price, avg_price)
 
             # SCENARIO B: No forecast. Use static fallback threshold (10 cents).
             else:
-                fallback_threshold = 0.10 
+                fallback_threshold = 0.10
                 is_cheap = current_price <= fallback_threshold
                 if is_cheap and not self._last_state:
                     _LOGGER.info("Charging based on static fallback threshold.")
@@ -131,7 +142,7 @@ class VirtualBatteryCharging(BinarySensorEntity):
     def _update_climate(self, charging):
         """Update the Airco setpoint based on Heating/Cooling and Charging state."""
         climate_id = self.config_data.get(CONF_CLIMATE_ENTITY)
-        if not climate_id: 
+        if not climate_id:
             return
 
         hvac_mode = self.config_data.get(CONF_HVAC_MODE, "Heating")
@@ -149,13 +160,17 @@ class VirtualBatteryCharging(BinarySensorEntity):
         climate_state = self.hass.states.get(climate_id)
         if climate_state and climate_state.attributes.get("temperature") != target_temp:
             self.hass.async_create_task(
-                self.hass.services.async_call("climate", "set_temperature", {"entity_id": climate_id, "temperature": target_temp})
+                self.hass.services.async_call(
+                    "climate",
+                    "set_temperature",
+                    {"entity_id": climate_id, "temperature": target_temp},
+                )
             )
 
     def _update_switches(self, charging):
         """Update all smart plugs."""
         switch_ids = self.config_data.get(CONF_SWITCH_ENTITIES, [])
-        if not switch_ids: 
+        if not switch_ids:
             return
 
         action = "turn_on" if charging else "turn_off"
@@ -163,11 +178,17 @@ class VirtualBatteryCharging(BinarySensorEntity):
         for entity_id in switch_ids:
             current_state = self.hass.states.get(entity_id)
             if current_state and current_state.state != ("on" if charging else "off"):
-                domain = entity_id.split('.')[0] 
-                self.hass.async_create_task(self.hass.services.async_call(domain, action, {"entity_id": entity_id}))
+                domain = entity_id.split(".")[0]
+                self.hass.async_create_task(
+                    self.hass.services.async_call(
+                        domain, action, {"entity_id": entity_id}
+                    )
+                )
 
     def _log_savings(self, current_price, avg_price):
         """Estimate financial benefit."""
         wattage = self.config_data.get(CONF_AIRCO_WATTAGE, 0)
         saved = (avg_price - current_price) * (wattage / 1000)
-        _LOGGER.info("Virtual Battery charging. Est. savings: %s EUR/hr", round(saved, 4))
+        _LOGGER.info(
+            "Virtual Battery charging. Est. savings: %s EUR/hr", round(saved, 4)
+        )
