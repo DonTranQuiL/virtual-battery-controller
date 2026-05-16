@@ -1,12 +1,17 @@
 {
   "domain": "virtual_battery_controller",
   "name": "Virtual Battery Controller",
-  "codeowners": ["@Malosaaa"],
+  "after_dependencies": [],
+  "codeowners": [
+    "@Malosaaa"
+  ],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/DonTranQuiL/virtual-battery-controller",
+  "issue_tracker": "https://github.com/DonTranQuiL/virtual-battery-controller/issues",
   "integration_type": "device",
   "iot_class": "calculated",
+  "quality_scale": "bronze",
   "requirements": [],
   "version": "1.0.0"
 }
