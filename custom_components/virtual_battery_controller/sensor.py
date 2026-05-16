@@ -34,7 +34,8 @@ class VirtualBatterySoC(SensorEntity):
     def native_value(self):
         """Calculate the percentage charge based on Heating or Cooling logic."""
         climate_id = self.config_data.get(CONF_CLIMATE_ENTITY)
-        if not climate_id: return None
+        if not climate_id: 
+            return None
 
         min_temp = self.config_data[CONF_MIN_TEMP]
         max_temp = self.config_data[CONF_MAX_TEMP]
@@ -52,13 +53,17 @@ class VirtualBatterySoC(SensorEntity):
         # INVERSION LOGIC for SoC %
         if hvac_mode == "Heating":
             # Heating: 100% full when room is WARM (max_temp)
-            if current_temp >= max_temp: return 100.0
-            if current_temp <= min_temp: return 0.0
+            if current_temp >= max_temp: 
+                return 100.0
+            if current_temp <= min_temp: 
+                return 0.0
             soc = ((current_temp - min_temp) / (max_temp - min_temp)) * 100
         else:
             # Cooling: 100% full when room is COLD (min_temp)
-            if current_temp <= min_temp: return 100.0
-            if current_temp >= max_temp: return 0.0
+            if current_temp <= min_temp: 
+                return 100.0
+            if current_temp >= max_temp: 
+                return 0.0
             soc = ((max_temp - current_temp) / (max_temp - min_temp)) * 100
             
         return round(float(soc), 1)
