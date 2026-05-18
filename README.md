@@ -1,14 +1,70 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
-[![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/DonTranQuiL/virtual-battery-controller/commits/main)
-[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.5+-blue.svg)](https://www.home-assistant.io/)
-[![Code Checker](https://github.com/DonTranQuiL/virtual-battery-controller/actions/workflows/codechecker.yml/badge.svg)](https://github.com/DonTranQuiL/virtual-battery-controller/actions)
-[![HACS Validation](https://github.com/DonTranQuiL/virtual-battery-controller/actions/workflows/hacs.yaml/badge.svg)](https://github.com/DonTranQuiL/virtual-battery-controller/actions)
-[![GitHub Release](https://img.shields.io/github/v/release/DonTranQuiL/virtual-battery-controller?style=flat-square)](https://github.com/DonTranQuiL/virtual-battery-controller/releases)
-[![Pytest](https://github.com/DonTranQuiL/virtual-battery-controller/actions/workflows/pytest.yml/badge.svg)](https://github.com/DonTranQuiL/virtual-battery-controller/actions/workflows/pytest.yml)
+<div align="center">
+
 # 🔋 Virtual Battery Controller (VBC)
 ### Turn your Home into a Thermal Battery for Smart Energy Arbitrage
+</div>
+<p align="center">
+  <!-- Release / License -->
+  <a href="https://github.com/DonTranQuiL/virtual-battery-controller/releases">
+    <img src="https://img.shields.io/github/v/release/DonTranQuiL/virtual-battery-controller?style=for-the-badge&color=007ec6" alt="Latest Release">
+  </a>
+  <a href="https://github.com/DonTranQuiL/virtual-battery-controller/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/DonTranQuiL/virtual-battery-controller?style=for-the-badge&color=007ec6" alt="License">
+  </a>
 
+  <!-- CI / Quality -->
+  <a href="https://github.com/DonTranQuiL/virtual-battery-controller/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/DonTranQuiL/virtual-battery-controller/codechecker.yml?style=for-the-badge&label=CODE%20CHECKS&color=5dbb0f" alt="Code Checks">
+  </a>
+  <a href="https://github.com/DonTranQuiL/virtual-battery-controller/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/DonTranQuiL/virtual-battery-controller/pytest.yml?style=for-the-badge&label=TESTS&color=5dbb0f" alt="Tests">
+  </a>
+  <a href="https://github.com/DonTranQuiL/virtual-battery-controller/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/DonTranQuiL/virtual-battery-controller/hacs.yaml?style=for-the-badge&label=HACS%20VALIDATION&color=5dbb0f" alt="HACS Validation">
+  </a>
+
+  <!-- Code Quality -->
+  <a href="https://github.com/pre-commit/pre-commit">
+    <img src="https://img.shields.io/badge/pre--commit-enabled-5dbb0f?style=for-the-badge" alt="pre-commit">
+  </a>
+  <a href="https://github.com/astral-sh/ruff">
+    <img src="https://img.shields.io/badge/code%20style-ruff-000000?style=for-the-badge" alt="Ruff">
+  </a>
+  <a href="https://codecov.io/gh/DonTranQuiL/virtual-battery-controller">
+  <img 
+    src="https://codecov.io/gh/DonTranQuiL/virtual-battery-controller/branch/main/graph/badge.svg"
+    alt="Coverage"
+    style="height:28px;"
+  >
+</a>
+
+  <!-- Ecosystem -->
+  <a href="https://hacs.xyz/">
+    <img src="https://img.shields.io/badge/HACS-CUSTOM-ff6e27?style=for-the-badge" alt="HACS">
+  </a>
+  <a href="https://www.home-assistant.io/">
+    <img src="https://img.shields.io/badge/Home%20Assistant-2024.5%2B-007ec6?style=for-the-badge" alt="Home Assistant">
+  </a>
+
+  <!-- Social / Support -->
+  <a href="https://github.com/DonTranQuiL">
+    <img src="https://img.shields.io/badge/maintainer-%40DonTranQuiL-007ec6?style=for-the-badge" alt="Maintainer">
+  </a>
+  <a href="https://ko-fi.com/DonTranQuiL">
+    <img src="https://img.shields.io/badge/buy%20me%20a%20coffee-donate-ffdd00?style=for-the-badge" alt="Donate">
+  </a>
+  <a href="https://community.home-assistant.io/">
+    <img src="https://img.shields.io/badge/community-forum-007ec6?style=for-the-badge" alt="Community">
+  </a>
+</p>
+
+</div>
+
+<div align="center">
+  
 **Virtual Battery Controller** is a sophisticated Home Assistant integration that transforms your climate-controlled rooms and smart appliances into a unified "Virtual Battery." By leveraging thermal mass and price forecasting, it automatically "charges" your home when energy is cheapest or when solar export is high, and "discharges" when prices peak.
+
+</div>
 
 ---
 
