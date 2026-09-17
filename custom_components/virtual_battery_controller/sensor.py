@@ -1,11 +1,12 @@
 from homeassistant.components.sensor import SensorEntity, SensorStateClass
 from homeassistant.const import PERCENTAGE
+
 from .const import (
-    DOMAIN,
     CONF_CLIMATE_ENTITY,
-    CONF_MIN_TEMP,
-    CONF_MAX_TEMP,
     CONF_HVAC_MODE,
+    CONF_MAX_TEMP,
+    CONF_MIN_TEMP,
+    DOMAIN,
 )
 
 
