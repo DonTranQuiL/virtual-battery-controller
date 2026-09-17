@@ -1,19 +1,21 @@
 import logging
 import statistics
+
 from homeassistant.components.binary_sensor import (
-    BinarySensorEntity,
     BinarySensorDeviceClass,
+    BinarySensorEntity,
 )
+
 from .const import (
-    DOMAIN,
-    CONF_PRICE_SENSOR,
-    CONF_CLIMATE_ENTITY,
-    CONF_SWITCH_ENTITIES,
-    CONF_MIN_TEMP,
-    CONF_MAX_TEMP,
-    CONF_SOLAR_EXPORT_SENSOR,
     CONF_AIRCO_WATTAGE,
+    CONF_CLIMATE_ENTITY,
     CONF_HVAC_MODE,
+    CONF_MAX_TEMP,
+    CONF_MIN_TEMP,
+    CONF_PRICE_SENSOR,
+    CONF_SOLAR_EXPORT_SENSOR,
+    CONF_SWITCH_ENTITIES,
+    DOMAIN,
 )
 
 _LOGGER = logging.getLogger(__name__)
