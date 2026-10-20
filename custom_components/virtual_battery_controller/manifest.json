@@ -2,10 +2,6 @@
   "domain": "virtual_battery_controller",
   "name": "Virtual Battery Controller",
   "after_dependencies": [],
-  "categories": [
-    "energy.solar_batteries",
-    "helpers.calculate_value"
-  ],
   "codeowners": [
     "@Malosaaa"
   ],
