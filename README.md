@@ -110,14 +110,23 @@ The integration logs estimated savings to your Home Assistant logs in real-time,
 
 ## 📦 Installation
 
-### Option 1: HACS (Recommended)
+### Option 1: Marketplace (Home Assistant 2026.11 and newer, recommended)
+
+[![Open your Home Assistant instance and open this repository in the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=DonTranQuiL&repository=virtual-battery-controller&category=integration)
+
+1. In Home Assistant, go to **Settings > Marketplace** and search for **Virtual Battery Controller** (or use the button above).
+2. Open it and select **Install**. The setup starts right away, no restart needed.
+
+> **Not in the Marketplace catalog yet?** Virtual Battery Controller is not in the HACS default list yet, so it does not show up in the Marketplace search. Until it is, select **Add from link** in the upper-right corner of the Marketplace, enter `https://github.com/DonTranQuiL/virtual-battery-controller`, select **Add**, then open Virtual Battery Controller and select **Install**.
+
+### Option 2: HACS (Home Assistant before 2026.11)
 1. Open **HACS** > **Integrations**.
 2. Click the three dots in the top right and select **Custom repositories**.
 3. Add `https://github.com/DonTranQuiL/virtual-battery-controller` with Category: `Integration`.
 4. Click **Install**.
 5. Restart Home Assistant.
 
-### Option 2: Manual
+### Option 3: Manual
 1. Download the `virtual_battery_controller` folder.
 2. Copy it into your `custom_components` directory.
 3. Restart Home Assistant.
